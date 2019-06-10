@@ -1,37 +1,42 @@
 // TODO
 
 
-var App = () => (
+const App = (props) => (
   <div>
-    <h2>My Grocery List</h2>
     <GroceryList />
   </div>
 );
 
-class GroceryList extends React.Component {
+const GroceryList = () => {
+  const items = ['food', 'drugs', 'rocknroll'];
+  const list = items.map(item => {
+    return(
+      <GroceryListItem item = {item} />
+    )
+  })
+
+  return (
+    <div>
+      <ul>
+        {list}
+      </ul>
+    </div>
+  )
+}
+
+class GroceryListItem extends React.Component {
   constructor(props) {
-    super(props);
-    this.list = ['Food1', 'Drugs'];
-    this.listItems = this.list.map((item, index) => 
-      <div key={index}>
-      <li>{item}</li>
-      </div>
-    );
+    super(props);   
   }
 
   render(props) {
-      console.log(this.list);
-      // let item = (this.list) => {
-      //   for(let i of this.list) {
-      //     return this.list[i];
-      //   }
-      // }
+      // console.log(item);
       return (
-        <div id='list'>
+
           <ul>
-            {this.listItems}
+            {this.props.item}
           </ul>
-        </div>);
+      )
   }
 }
 
