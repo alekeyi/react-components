@@ -10,16 +10,28 @@ var App = () => (
 
 class GroceryList extends React.Component {
   constructor(props) {
-    super();
+    super(props);
     this.list = ['Food1', 'Drugs'];
-  }
-
-  render() {
-    return (
-      <div id="list">
-        {this.list}
+    this.listItems = this.list.map((item, index) => 
+      <div key={index}>
+      <li>{item}</li>
       </div>
     );
+  }
+
+  render(props) {
+      console.log(this.list);
+      // let item = (this.list) => {
+      //   for(let i of this.list) {
+      //     return this.list[i];
+      //   }
+      // }
+      return (
+        <div id='list'>
+          <ul>
+            {this.listItems}
+          </ul>
+        </div>);
   }
 }
 
